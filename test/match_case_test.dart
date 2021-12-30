@@ -1,5 +1,4 @@
 import 'package:match_case/match_case.dart';
-import 'package:match_case/src/match_ext.dart';
 import 'package:test/test.dart';
 
 void main() {
