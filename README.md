@@ -11,29 +11,30 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+A dart package for pattern matching. Inspired by `match` in Rust and `when` in Kotlin
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+var x = 2;
+var result = match(
+  x,
+  {
+    1: () => "Its a one",
+    () => x == 2 || x == 3: () => "Its a $x",
+  },
+  "Error!!", // (Optional) default value in case nothing is matched
+);
+
+// Output
+$ "Its a 2"
 ```
 
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+## `match` Definition
+```dart
+U match<T, U>(
+  T value, // Value that needs to be matched
+  Map<T, U Function()> fns, // T -> Any primitive values or a function that returns true or false
+  U defaultValue, // Optional value that is returned when nothing is matched
+)
+```
