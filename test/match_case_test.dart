@@ -1,12 +1,17 @@
-import 'package:flutter_test/flutter_test.dart';
-
 import 'package:match_case/match_case.dart';
+import 'package:test/test.dart';
 
 void main() {
-  test('adds one to input values', () {
-    final calculator = Calculator();
-    expect(calculator.addOne(2), 3);
-    expect(calculator.addOne(-7), -6);
-    expect(calculator.addOne(0), 1);
+  test('Test Match case', () async {
+    var x = 2;
+    var result = match(
+      x,
+      {
+        1: () => "Its a one",
+        () => x == 2 || x == 3: () => "Its a $x",
+      },
+      "Error!!",
+    );
+    expect(result, "Its a 2");
   });
 }
