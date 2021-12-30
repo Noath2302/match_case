@@ -1,4 +1,6 @@
 typedef MatchFn<T> = bool Function(T n);
+typedef EvalFn<V> = V Function();
+typedef EvalFnNil<V> = V? Function();
 
 extension MatchCaseOperators<T> on MatchFn<T> {
   MatchFn<T> operator &(MatchFn<T> other) {
@@ -40,4 +42,12 @@ MatchFn<num> lte(num number) {
 
 MatchFn<num> range(num from, num to) {
   return (n) => n >= from && n <= to;
+}
+
+EvalFnNil<T> nil<T>() {
+  return () => null;
+}
+
+EvalFn<T> val<T>(T val) {
+  return () => val;
 }

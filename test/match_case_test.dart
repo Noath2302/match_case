@@ -10,7 +10,7 @@ void main() {
         eq(1): () => "Its a one",
         (_) => x == 2 || x == 3: () => "Its a $x",
       },
-      "Error!!",
+      other: val("Error!!"),
     );
     expect(result, "Its a 2");
   });
@@ -28,7 +28,7 @@ void main() {
     var result = match(
       x,
       cases,
-      "Error!!",
+      other: val("Error!!"),
     );
 
     expect(result, "Its a 2");
@@ -36,7 +36,7 @@ void main() {
     result = match(
       y,
       cases,
-      "Error!!",
+      other: val("Error!!"),
     );
     expect(result, "Greater than 2");
   });
@@ -54,8 +54,23 @@ void main() {
     var result = match(
       x,
       cases,
-      "Error!!",
+      other: val("Error!!"),
     );
     expect(result, "Its an eleven");
   });
+
+  test('Test Match with enums', () async {
+    var enm = MyEnum.a2;
+    var result = match(
+      enm,
+      {
+        eq(MyEnum.a1): () => "a1",
+        eq(MyEnum.a2): () => "a2",
+      },
+      other: nil<String>(),
+    );
+    expect(result, "a2");
+  });
 }
+
+enum MyEnum { a1, a2 }
