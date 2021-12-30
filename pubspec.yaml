@@ -1,6 +1,6 @@
 name: match_case
 description: A dart package for pattern matching.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/sabinbajracharya/match_case
 
 environment:
