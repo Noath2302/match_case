@@ -11,3 +11,7 @@
 
 - Breaking: Change apis to use helper method and operator for pattern matching
 - Add test cases for operators.
+
+## 0.0.4
+
+- Export the helper method and operators
