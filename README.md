@@ -27,7 +27,7 @@ var result = match(
     gt(2) & lt(10): () => "Greater than 2",
     (digit) => digit == 11: () => "Its an eleven",
   },
-  "Error!!",
+  other: val("Error!!"),
 );
 
 expect(result, "Its an eleven");
@@ -38,20 +38,28 @@ expect(result, "Its an eleven");
 ```dart
 U match<T, U>(
   T value, // Value that needs to be matched
-  Map<bool Function(T), U Function()> fns,
-  U defaultValue, // Value that is returned when nothing is matched (Can be null as well)
-)
+  Map<bool Function(T), U Function()> fns, {
+  required U Function() other,  // a method to return the default value
+})
 ```
 
 ## List of helper matcher function
 
 ```dart
 1. eq(T value)
-2. gt(num number)
-3. lt(num number)
-3. gte(num number)
-4. lte(num number)
-5. range(num from, num to)
+2. neq(T value)
+3. gt(num number)
+4. lt(num number)
+5. gte(num number)
+6. lte(num number)
+7. range(num from, num to)
+```
+
+## List of helper function for other param
+
+```dart
+1. val(T value) // Function that returns the passed value
+2. nil<T>() // Function that returns null
 ```
 
 ## List of operators

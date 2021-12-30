@@ -15,3 +15,9 @@
 ## 0.0.4
 
 - Export the helper method and operators
+
+## 0.0.5
+
+- Breaking: Make default value as named parameter and it should be a function
+- Add neq(T value) helper method for match condition
+- Add val(T value) and nil<T>() helper methods to used in other param
