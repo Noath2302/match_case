@@ -71,6 +71,19 @@ void main() {
     );
     expect(result, "a2");
   });
+
+  test('Test Match with neq helper method', () async {
+    var number = 5;
+    var result = match(
+      number,
+      {
+        eq(6): () => "Is 6",
+        neq(6): () => "Not a 6",
+      },
+      other: val("Some other number..."),
+    );
+    expect(result, "Not a 6");
+  });
 }
 
 enum MyEnum { a1, a2 }

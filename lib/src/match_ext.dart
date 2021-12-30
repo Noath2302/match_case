@@ -24,6 +24,10 @@ MatchFn<T> eq<T>(T value) {
   return (n) => n == value;
 }
 
+MatchFn<T> neq<T>(T value) {
+  return (n) => n != value;
+}
+
 MatchFn<num> gt(num number) {
   return (n) => n > number;
 }
