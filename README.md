@@ -16,25 +16,43 @@ A dart package for pattern matching. Inspired by `match` in Rust and `when` in K
 ## Usage
 
 ```dart
-var x = 2;
+var x = 11;
 var result = match(
   x,
   {
-    1: () => "Its a one",
-    () => x == 2 || x == 3: () => "Its a $x",
+    eq(1): () => "Its a one",
+    eq(2): () => "Its a $x",
+    gt(2) & lt(10): () => "Greater than 2",
+    (digit) => digit == 11: () => "Its an eleven",
   },
-  "Error!!", // (Optional) default value in case nothing is matched
+  "Error!!",
 );
 
-// Output
-$ "Its a 2"
+expect(result, "Its an eleven");
 ```
 
 ## `match` Definition
 ```dart
 U match<T, U>(
   T value, // Value that needs to be matched
-  Map<T, U Function()> fns, // T -> Any primitive values or a function that returns true or false
-  U defaultValue, // Optional value that is returned when nothing is matched
+  Map<bool Function(T), U Function()> fns,
+  U defaultValue, // Value that is returned when nothing is matched (Can be null as well)
 )
 ```
+
+## List of helper matcher function
+```dart
+1. eq(T value)
+2. gt(num number)
+3. lt(num number)
+3. gte(num number)
+4. lte(num number)
+5. range(num from, num to)
+```
+
+## List of operators
+```dart
+1. &
+2. |
+```
+
