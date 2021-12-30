@@ -23,11 +23,15 @@ var result = match(
   x,
   {
     eq(1): () => "Its a one",
-    eq(2): () => "Its a $x",
-    gt(2) & lt(10): () => "Greater than 2",
-    (digit) => digit == 11: () => "Its an eleven",
+    
+    // Use "val" if you don't need a function and just want to return the value
+    eq(2): val("Its a $x"), 
+    gt(2) & lt(10): val("Greater than 2"),
+    
+    // A function can also be used to match condition if the helper method is not sufficient
+    (digit) => digit == 11: val("Its an eleven"),
   },
-  other: val("Error!!"),
+  other: val("Unknown value"),
 );
 
 expect(result, "Its an eleven");
